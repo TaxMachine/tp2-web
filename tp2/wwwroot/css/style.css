@@ -1,0 +1,42 @@
+﻿.carte {
+    border: 1px solid #000;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #B1BDC5;
+}
+.carte p {
+    margin: 10px;
+}
+.titre {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
+footer {
+    margin-top: 20px;
+}
+body {
+    background-color: #DADDE2;
+}
+.fav {
+    transition-timing-function: ease-out;
+    transition-duration: 2s;
+}
+.fav:hover {
+    cursor: pointer;
+    width: 60px;
+    transition-timing-function: ease-in;
+    transition-duration: 2s;
+}
+
+
+.container-dark {
+    background-color: #2C3E50;
+    color: #fff;
+}
+
+.container-light {
+    background-color: #fff;
+    color: #000;
+}
