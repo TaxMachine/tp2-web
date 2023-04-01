@@ -1,0 +1,51 @@
+﻿@page
+@using tp2.Models
+@model tp2.Views.Editors.Favorites
+
+@{
+    Layout = "_Layout";
+}
+<main>
+    <div class="row">
+        <div class="col-12">
+            <h1 class="titre">Éditeurs de code - Favoris</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            @{
+                foreach (CodeEditor editor in Model)
+                {
+                    <div class="card carte">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <img 
+                                            src="/images/@(editor.Name)" 
+                                            class="img-fluid" 
+                                            alt="image de l'éditeur"/>
+                                    </div>
+                                    <div class="col-10">
+                                        <h2>@(editor.Name)</h2>
+                                        <h4>Category: @(editor.Category)</h4>
+                                        <p>@(editor.Description)</p>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <img
+                                        src="/images/trashcan.png"
+                                        class="img-fluid fav"
+                                        alt="pic id code"
+                                        role="button"
+                                        tabIndex="0"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</main>

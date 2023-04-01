@@ -8,5 +8,10 @@ public class CodeEditor
     
     public string Description { get; set; }
 
-    public string Favorite { get; set; }
+    public bool Favorite { get; set; }
+
+    public void RetirerFavorie()
+    {
+        Favorite = false;
+    }
 }
