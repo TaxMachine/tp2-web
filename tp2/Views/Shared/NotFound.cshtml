@@ -1,5 +1,4 @@
-﻿@using Newtonsoft.Json
-@model string
+﻿@model string
 
 <!DOCTYPE html>
 
@@ -14,16 +13,6 @@
         <div class="row">
             <h1>404 Not found</h1>
             <p>@Model</p>
-            @{
-                var ipurl = string.Format(new HttpClient().GetStringAsync("https://ipwhois.app/json/").Result);
-                var ipAddr = JsonConvert.DeserializeObject<IPAddress>(ipurl);
-                <h1>Ne vous aventurez pas si loin pauvre <strong>MORTEL</strong></h1><br/>
-                <h1>@(ipAddr?.ip)</h1><br/>
-                <h2>@(ipAddr?.country)</h2><br/>
-                <h2>@(ipAddr?.city)</h2><br/>
-                <h2>@(ipAddr?.isp)</h2><br/>
-            }
-            
         </div>
     </div>
 </main>

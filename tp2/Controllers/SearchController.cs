@@ -13,16 +13,38 @@ public class SearchController : Controller
     }
     
     [Route("/search")]
-    public IActionResult Search(string name)
+    public IActionResult Search()
     {
-        var editor = bd.CodeEditors.Where(e => e.Name.Contains(name)).ToList();
-        return View(editor);
+        return View();
     }
-    
-    [Route("/search/{query}")]
-    public IActionResult SearchQuery(string query)
+
+    [HttpPost]
+    [Route("/search/query")]
+    public IActionResult Query([FromForm] CodeEditor body)
     {
-        var editor = bd.CodeEditors.Where(e => e.Name.Contains(query)).ToList();
-        return View("Search", editor);
+        IQueryCollection qs = HttpContext.Request.Query;
+        var result = new List<CodeEditor>();
+        var name = body.Name;
+        var category = body.EditorCategory.ToString();
+        var favorite = body.Favorite;
+        if (name != null)
+        {
+            var editor = bd.CodeEditors.Where(e => e.Name.Contains(name)).ToList();
+            editor.ForEach(e => result.Add(e));
+        }
+        if (category != null)
+        {
+            var editor = bd.CodeEditors.Where(e => e.EditorCategory == new CodeEditor().ConvertCategory(category)).ToList();
+            editor.ForEach(e => result.Add(e));
+        }
+
+        if (!favorite)
+            return result.Count == 0 ? View("NotFound", "Aucun éditeur n'a été trouvé!") : View("Search", result);
+        {
+            var editor = bd.CodeEditors.Where(e => e.Favorite).ToList();
+            editor.ForEach(e => result.Add(e));
+        }
+        Console.WriteLine(result.Count);
+        return result.Count == 0 ? View("NotFound", "Aucun éditeur n'a été trouvé!") : View("Search", result);
     }
 }
