@@ -1,29 +1,22 @@
-﻿@page
-@model tp2.Views.Home.Index
-@using tp2.Models
-@{
-    Layout = "_Layout";
-}
+﻿@model List<CodeEditor>
 
 <div class="container-fluid">
-    <!-- Variable remplacé lors du chargement de la page depuis le backend. Contient le header -->
     <main>
         <div class="row">
             <div class="col-12">
                 <h1 class="titre">Éditeurs de code</h1>
             </div>
         </div>
-        <!-- row contenant les éléments chargés par le javascript. -->
         <div class="row">
             <div class="col-12" id="IDE">
                 @{
-                    foreach (CodeEditor editor in Model) {
+                    foreach (var editor in Model) {
                         <div class="card carte">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img src="@editor.Name" class="img-fluid">
+                                            <img src="/images/@editor.Id" class="img-fluid">
                                         </div>
                                         
                                         <div class="col-10">
@@ -34,9 +27,9 @@
                                     </div>
                                     <div class="col-12">
                                         <img 
-                                            src="/images/@{editor.Favorite ? "star-clear.png" : "star-filled.png"}" 
+                                            src="/images/@(editor.Favorite ? "star-clear.png" : "star-filled.png")" 
                                             class="img-fluid fav"
-                                        />
+                                            alt="étoile favorie"/>
                                     </div>
                                 </div>
                             </div>

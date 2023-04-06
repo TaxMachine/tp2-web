@@ -14,20 +14,21 @@ public class EditorsController : Controller
     [Route("/")]
     public IActionResult Index()
     {
-        return View(bd.CodeEditors);
+        return View(bd.CodeEditors.ToList());
     }
     
-    [Route("/search")]
-    public IActionResult Search(string name)
+    [Route("/editors/{id:int}")]
+    public IActionResult Details(int id)
     {
-        var editor = bd.CodeEditors.Where(e => e.Name.Contains(name)).ToList();
-        return View(editor);
+        var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
+        if (editor == null)
+        {
+            return View("NotFound", "L'éditeur n'a pas été trouvé!");
+        }
+        else
+        {
+            return View(editor);
+        }
     }
-
-    [Route("/favorie")]
-    public IActionResult Favorites()
-    {
-        var editor = bd.CodeEditors.Where(e => e.Favorite).ToList();
-        return View(editor);
-    }
+    
 }
