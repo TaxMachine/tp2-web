@@ -17,7 +17,7 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <img 
-                                            src="/images/@(editor.Id)" 
+                                            src="/images/@(editor.Id).svg" 
                                             class="img-fluid" 
                                             alt="image de l'éditeur"/>
                                     </div>
@@ -28,13 +28,14 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <img
-                                        src="/images/trashcan.png"
-                                        class="img-fluid fav"
-                                        alt="pic id code"
-                                        role="button"
-                                        tabIndex="0"
-                                    />
+                                    <a href="/favorites/remove/@editor.Id">
+                                        <img
+                                            src="/images/trashcan.png"
+                                            class="img-fluid fav"
+                                            alt="pic id code"
+                                            role="button"
+                                            tabIndex="0"/>
+                                    </a>
                                 </div>
                             </div>
                         </div>

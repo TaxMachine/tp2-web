@@ -21,13 +21,21 @@ public class EditorsController : Controller
     public IActionResult Details(int id)
     {
         var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
+        return editor == null ? View("NotFound", "L'éditeur n'a pas été trouvé!") : View(editor);
+    }
+    
+    [Route("/editors/addfavorite/{id:int}")]
+    public IActionResult AddFavorite(int id)
+    {
+        var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
         if (editor == null)
         {
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
         else
         {
-            return View(editor);
+            editor.Favorite = !editor.Favorite;
+            return RedirectToAction("Index");
         }
     }
     

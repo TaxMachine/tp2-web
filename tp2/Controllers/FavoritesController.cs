@@ -12,9 +12,25 @@ public class FavoritesController : Controller
     }
     
     // GET
+    [Route("/favorites")]
     public IActionResult Favorites()
     {
         var editor = bd.CodeEditors.Where(e => e.Favorite).ToList();
         return View(editor);
+    }
+    
+    [Route("/favorites/remove/{id:int}")]
+    public IActionResult Remove(int id)
+    {
+        var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
+        if (editor == null)
+        {
+            return View("NotFound", "L'éditeur n'a pas été trouvé!");
+        }
+        else
+        {
+            editor.Favorite = false;
+            return RedirectToAction("Favorites");
+        }
     }
 }

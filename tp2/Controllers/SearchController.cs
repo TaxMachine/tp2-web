@@ -12,9 +12,17 @@ public class SearchController : Controller
         bd = db;
     }
     
+    [Route("/search")]
     public IActionResult Search(string name)
     {
         var editor = bd.CodeEditors.Where(e => e.Name.Contains(name)).ToList();
         return View(editor);
+    }
+    
+    [Route("/search/{query}")]
+    public IActionResult SearchQuery(string query)
+    {
+        var editor = bd.CodeEditors.Where(e => e.Name.Contains(query)).ToList();
+        return View("Search", editor);
     }
 }

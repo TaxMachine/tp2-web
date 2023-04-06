@@ -16,7 +16,10 @@
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img src="/images/@editor.Id" class="img-fluid">
+                                            <img 
+                                                src="/images/@(editor.Id).svg" 
+                                                class="img-fluid"
+                                                alt="image de l'IDE"/>
                                         </div>
                                         
                                         <div class="col-10">
@@ -26,10 +29,12 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <img 
-                                            src="/images/@(editor.Favorite ? "star-clear.png" : "star-filled.png")" 
-                                            class="img-fluid fav"
-                                            alt="étoile favorie"/>
+                                        <a href="/editors/addfavorite/@editor.Id">
+                                            <img
+                                                src="/images/@(editor.Favorite ? "star-filled.png" : "star-clear.png")" 
+                                                class="img-fluid fav"
+                                                alt="étoile favorie"/>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
