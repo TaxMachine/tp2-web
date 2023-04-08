@@ -15,36 +15,52 @@ public class SearchController : Controller
     [Route("/search")]
     public IActionResult Search()
     {
-        return View();
+        var model = new SearchResults
+        {
+            Criteria = new SearchCriteria
+            {
+                IsCommandLine = true,
+                IsTextEditor = true,
+                IsIDE = true
+            },
+            Editors = bd.CodeEditors.ToList()
+        };
+        return View("Search", model);
     }
-
+    
     [HttpPost]
     [Route("/search/query")]
-    public IActionResult Query([FromForm] CodeEditor body)
+    public ActionResult Rechercher(SearchResults model)
     {
-        IQueryCollection qs = HttpContext.Request.Query;
-        var result = new List<CodeEditor>();
-        var name = body.Name;
-        var category = body.EditorCategory.ToString();
-        var favorite = body.Favorite;
-        if (name != null)
+        var editors = bd.CodeEditors.ToList();
+        if (!string.IsNullOrEmpty(model.Criteria.Keywords))
         {
-            var editor = bd.CodeEditors.Where(e => e.Name.Contains(name)).ToList();
-            editor.ForEach(e => result.Add(e));
+            editors = editors.Where(e => e.Name.Contains(model.Criteria.Keywords)).ToList();
         }
-        if (category != null)
+        if (model.Criteria.IsTextEditor != null)
         {
-            var editor = bd.CodeEditors.Where(e => e.EditorCategory == new CodeEditor().ConvertCategory(category)).ToList();
-            editor.ForEach(e => result.Add(e));
+            editors = editors.Where(e => e.EditorCategory == 
+                                         (model.Criteria.IsTextEditor is true 
+                                             ? EditorCategory.TextEditor 
+                                             : null)).ToList();
         }
-
-        if (!favorite)
-            return result.Count == 0 ? View("NotFound", "Aucun éditeur n'a été trouvé!") : View("Search", result);
+        if (model.Criteria.IsIDE != null)
         {
-            var editor = bd.CodeEditors.Where(e => e.Favorite).ToList();
-            editor.ForEach(e => result.Add(e));
+            editors = editors.Where(e => e.EditorCategory == 
+                                         (model.Criteria.IsIDE is true 
+                                             ? EditorCategory.IDE 
+                                             : null)).ToList();
         }
-        Console.WriteLine(result.Count);
-        return result.Count == 0 ? View("NotFound", "Aucun éditeur n'a été trouvé!") : View("Search", result);
+        if (model.Criteria.IsCommandLine != null)
+        {
+            editors = editors.Where(e => e.EditorCategory ==
+                                         (model.Criteria.IsCommandLine is true 
+                                             ? EditorCategory.Terminal 
+                                             : null)).ToList();
+        }
+        model.Editors = editors;
+        
+        return View("Search", model);
     }
+
 }

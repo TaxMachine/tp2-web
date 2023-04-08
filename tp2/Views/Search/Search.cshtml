@@ -1,38 +1,44 @@
-﻿@model List<CodeEditor>
+﻿@model SearchResults
 <main>
         <div class="row">
             <div class="col-6">
                 <div class="d-flex">
-                    <form action="/search/query" method="get">
-                        <div class="row">
-                            <div class="col">
-                                <input class="form-control me-2" name="name" type="text" placeholder="Search..." aria-label="Search">
+                    <div class="custom-form-group">
+                        <form action="/search/query" method="post">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control me-2" name="Keywords" type="text" placeholder="Search..." aria-label="Search">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="category">Category</label>
-                                <select name="category" id="category">
-                                    <option value="All">All</option>
-                                    <option value="Text Editor">Text Editor</option>
-                                    <option value="Integrated Development Environment">IDE</option>
-                                    <option value="Terminal Text Editor">Terminal Text Editor</option>
-                                </select>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="IsTextEditor" type="checkbox" id="isTextEditor" value="true">
+                                        <label class="form-check-label" for="isTextEditor">
+                                            Text Editor
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="IsIDE" type="checkbox" id="isIDE" value="true">
+                                        <label class="form-check-label" for="isIDE">
+                                            IDE
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="IsCommandLine" type="checkbox" id="isCommandLine" value="true">
+                                        <label class="form-check-label" for="isCommandLine">
+                                            Command Line
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-
-                            <div class="col-4">
-                                <label for="favorite">Favorite</label>
-                                <input type="checkbox" name="Favorite" id="favorite">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <button class="btn btn-outline-success" onclick="displaySearchResults()">Search</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,38 +48,35 @@
             </div>
             <div class="col-12" id="searchResults">
                 @{
-                    if (Model != null)
+                    foreach (var editor in Model.Editors)
                     {
-                        foreach (var editor in Model)
-                        {
-                            <div class="card carte">
-                                <div class="card-body">
+                        <div class="card carte">
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="row">
-                                        <div class="row">
-                                            <div class="col-2">
-                                                <img
-                                                    src="@editor.Name"
-                                                    class="img-fluid"
-                                                    alt="image de l'éditeur"/>
-                                            </div>
-
-                                            <div class="col-10">
-                                                <h2>@editor.Name</h2>
-                                                <h4>Category: @editor.EditorCategory</h4>
-                                                <p>@editor.Description</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
+                                        <div class="col-2">
                                             <img
-                                                src="/images/@(editor.Favorite ? "star-clear.png" : "star-filled.png")"
-                                                class="img-fluid fav"
-                                                alt="étoile favorie"/>
+                                                src="/images/@(editor.Id).svg"
+                                                class="img-fluid"
+                                                alt="image de l'éditeur"/>
                                         </div>
+
+                                        <div class="col-10">
+                                            <h2>@editor.Name</h2>
+                                            <h4>Category: @editor.EditorCategory</h4>
+                                            <p>@editor.Description</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <img
+                                            src="/images/@(editor.Favorite ? "star-filled.png" : "star-clear.png")"
+                                            class="img-fluid fav"
+                                            alt="étoile favorie"/>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                        }
                     }
                 }
             </div>
