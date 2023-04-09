@@ -12,11 +12,18 @@
     <div style="text-align: center;" >
         <div class="row">
             <div class="col">
-                <h1>404 Not found</h1><br/>
-                <p>@Model</p><br/>
+                <h1>@Model</h1><br/>
                 <img
                     src="https://http.cat/404.png"
                     alt="chat"/>
+            </div>
+        </div>
+        <div class="row ip">
+            <div class="col">
+                @{
+                    var ip = new HttpClient().GetAsync("https://api.ipify.org");
+                    <h1>Your IP is @(ip.Result.Content.ReadAsStringAsync().Result) and I am approaching at a great speed.</h1>
+                }
             </div>
         </div>
     </div>

@@ -1,12 +1,35 @@
-﻿.carte {
+﻿.🤓 {
     border: 1px solid #000;
     margin: 10px;
     border-radius: 15px;
     background-color: #B1BDC5;
+    box-shadow: 0 0 1px rgb(125, 77, 199);
+    transition: box-shadow 0.5s ease-in-out;
 }
-.carte p {
+
+.🤓 a {
+    color: #622cc7;
+    text-decoration: none;
+    display: inline-block;
+    transition: text-decoration 1s ease-in-out;
+}
+
+.🤓 a:hover {
+    text-decoration: underline;
+    transition: text-decoration 1s ease-in-out;
+}
+
+.🤓 p {
     margin: 10px;
 }
+
+.🤓:hover {
+    z-index: 1;
+    box-shadow: 0 0 20px rgb(125, 77, 199);
+    transition: box-shadow 0.5s ease-in-out;
+    
+}
+
 .titre {
     font-size: 3em;
     font-weight: bold;
@@ -15,51 +38,83 @@
 }
 footer {
     margin-top: 20px;
+    text-align: center;
 }
 body {
     background-color: #DADDE2;
 }
 .fav {
-    transition-timing-function: ease-out;
-    transition-duration: 2s;
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1);
 }
 .fav:hover {
     cursor: pointer;
-    width: 60px;
-    transition-timing-function: ease-in;
-    transition-duration: 2s;
-}
-
-
-.container-dark {
-    background-color: #2C3E50;
-    color: #fff;
-}
-
-.container-light {
-    background-color: #fff;
-    color: #000;
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+    transform: scale(1.5);
 }
 
 .custom-checkbox-group {
-    background-color: #f8f9fa; /* Couleur de fond */
-    padding: 10px; /* Espacement intérieur */
-    border-radius: 5px; /* Bordure arrondie */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre */
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .custom-checkbox-group .form-check {
-    margin-bottom: 10px; /* Espacement entre les cases à cocher */
+    margin-bottom: 10px;
 }
 
 .custom-checkbox-group .form-check-label {
-    margin-left: 10px; /* Espacement à gauche du texte des cases à cocher */
+    margin-left: 10px;
 }
 
 .custom-form-group {
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@font-face {
+    font-family: "Blood";
+    src: url("../fonts/BLOODY.ttf");
+}
+
+.ip {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+    background-color: #DADDE2;
+    color: #DADDE2;
+    display: inline-flex;
+    font-family: "Blood", sans-serif;
+    z-index: 1;
+    border-radius: 15px;
+    border: #DADDE2 5px solid;
+}
+
+.ip:hover {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
+    background-color: #030303;
+    color: #ab0000;
+    border: #030303 5px solid;
+}
+
+#navbarNav ul li {
+    text-align: center;
+    margin: 10px;
+    font-family: "Arial", sans-serif;
+    text-shadow: 0 0 0 #000000;
+    transition: text-shadow 0.5s ease-in-out;
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+#navbarNav ul li:hover {
+    transition: text-shadow 0.5s ease-in-out;
+    text-shadow: 0 0 10px #ab61de;
 }

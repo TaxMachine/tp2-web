@@ -1,0 +1,114 @@
+﻿@model SearchResults
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+<div>
+    <main>
+            <div class="row">
+                <div class="col-6">
+                    <div class="d-flex">
+                        <div class="custom-form-group">
+                            @using (Html.BeginForm("Query", "Search", FormMethod.Post)) {
+                                <div class="row">
+                                    <div class="col">
+                                        @Html.TextBoxFor(
+                                            s => s.Criteria.Keywords, new
+                                            {
+                                                @class = "form-control me-2", 
+                                                placeholder = !string.IsNullOrEmpty(Model.Criteria.Keywords) ? Model.Criteria.Keywords : "Search..."
+                                            })
+                                        <!--<input class="form-control me-2" name="Keywords" type="text" placeholder="Search..." aria-label="Search">-->
+                                        </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <!--<input class="form-check-input" name="IsTextEditor" type="checkbox" id="isTextEditor" value="true">-->
+                                            @Html.CheckBoxFor(
+                                                s => s.Criteria.IsTextEditor, new
+                                                {
+                                                    @class = "form-check-input", 
+                                                    id = "isTextEditor", 
+                                                    value = "true"
+                                                })
+                                            <label class="form-check-label" for="isTextEditor">Text Editor</label>
+                                            </div>
+                                        <div class="form-check">
+                                            <!--<input class="form-check-input" name="IsIDE" type="checkbox" id="isIDE" value="true">-->
+                                            @Html.CheckBoxFor(s => s.Criteria.IsIDE, new
+                                            {
+                                                @class = "form-check-input",
+                                                id = "isIDE",
+                                                value = "true"
+                                            })
+                                            <label class="form-check-label" for="isIDE">IDE</label>
+                                            </div>
+                                        <div class="form-check">
+                                            <!--<input class="form-check-input" name="IsCommandLine" type="checkbox" id="isCommandLine" value="true">-->
+                                            @Html.CheckBoxFor(s => s.Criteria.IsCommandLine, new
+                                            {
+                                                @class = "form-check-input",
+                                                id = "isCommandLine",
+                                                value = "true"
+                                            })
+                                            <label class="form-check-label" for="isCommandLine">Command Line</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="titre">Résultats</h1>
+                </div>
+                <div class="col-12" id="searchResults">
+                    @{
+                        foreach (var editor in Model.Editors)
+                        {
+                            <div class="card 🤓">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img
+                                                    src="/images/@(editor.Id).svg"
+                                                    class="img-fluid"
+                                                    alt="image de l'éditeur"/>
+                                            </div>
+
+                                            <div class="col-10">
+                                                <a href="/editors/@editor.Id"><h2>@editor.Name</h2></a>
+                                                <h4>Category: @editor.EditorCategory</h4>
+                                                <p>@editor.Description</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <img
+                                                src="/images/@(editor.Favorite ? "star-filled.png" : "star-clear.png")"
+                                                class="img-fluid fav"
+                                                alt="étoile favorie"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </main>
+</div>
+</body>
+</html>

@@ -25,42 +25,49 @@ public class SearchController : Controller
             },
             Editors = bd.CodeEditors.ToList()
         };
-        return View("Search", model);
+        return View("Search");
     }
     
     [HttpPost]
     [Route("/search/query")]
-    public ActionResult Rechercher(SearchResults model)
+    public IActionResult Query(SearchResults model)
     {
         var editors = bd.CodeEditors.ToList();
+        Console.WriteLine("text editor :" + model.Criteria.IsTextEditor);
+        Console.WriteLine("ide :" + model.Criteria.IsIDE);
+        Console.WriteLine("command line :" + model.Criteria.IsCommandLine);
+        Console.WriteLine("editors: " + editors.Count);
         if (!string.IsNullOrEmpty(model.Criteria.Keywords))
         {
-            editors = editors.Where(e => e.Name.Contains(model.Criteria.Keywords)).ToList();
+            editors = editors.Where(e => e.Name.ToLower().Contains(model.Criteria.Keywords.ToLower())).ToList();
         }
-        if (model.Criteria.IsTextEditor != null)
+        Console.WriteLine("keywords check: " + editors.Count);
+        if (model.Criteria.IsTextEditor)
         {
             editors = editors.Where(e => e.EditorCategory == 
                                          (model.Criteria.IsTextEditor is true 
                                              ? EditorCategory.TextEditor 
                                              : null)).ToList();
         }
-        if (model.Criteria.IsIDE != null)
+        Console.WriteLine("text editor check: " + editors.Count);
+        if (model.Criteria.IsIDE)
         {
             editors = editors.Where(e => e.EditorCategory == 
                                          (model.Criteria.IsIDE is true 
                                              ? EditorCategory.IDE 
                                              : null)).ToList();
         }
-        if (model.Criteria.IsCommandLine != null)
+        Console.WriteLine("ide check: " + editors.Count);
+        if (model.Criteria.IsCommandLine)
         {
             editors = editors.Where(e => e.EditorCategory ==
                                          (model.Criteria.IsCommandLine is true 
                                              ? EditorCategory.Terminal 
                                              : null)).ToList();
         }
+        Console.WriteLine("command line check: " + editors.Count);
         model.Editors = editors;
-        
-        return View("Search", model);
+        return View("Query", model);
     }
 
 }

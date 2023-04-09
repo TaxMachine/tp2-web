@@ -11,19 +11,19 @@
             <div class="col-12" id="IDE">
                 @{
                     foreach (var editor in Model) {
-                        <div class="card carte">
+                        <div class="card 🤓">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="row">
                                         <div class="col-2">
-                                            <img 
+                                            <img
                                                 src="/images/@(editor.Id).svg" 
                                                 class="img-fluid"
                                                 alt="image de l'IDE"/>
                                         </div>
                                         
                                         <div class="col-10">
-                                            <h2>@editor.Name</h2>
+                                            <a href="/editors/@editor.Id"><h2>@editor.Name</h2></a>
                                             <h4>Category: @editor.EditorCategory</h4>
                                             <p>@editor.Description</p>
                                         </div>

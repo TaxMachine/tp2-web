@@ -2,16 +2,16 @@
 
 public class SearchCriteria
 {
-    public string Keywords { get; set; }
-    public bool? IsTextEditor { get; set; }
-    public bool? IsIDE { get; set; }
-    public bool? IsCommandLine { get; set; }
+    public string Keywords { get; init; }
+    public bool IsTextEditor { get; init; }
+    public bool IsIDE { get; init; }
+    public bool IsCommandLine { get; init; }
     
     public SearchCriteria()
     {
         Keywords = "";
-        IsTextEditor = null;
-        IsIDE = null;
-        IsCommandLine = null;
+        IsTextEditor = true;
+        IsIDE = true;
+        IsCommandLine = true;
     }
 }
