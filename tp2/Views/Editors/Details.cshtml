@@ -10,20 +10,22 @@
 <main class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="card 🤓">
+            <div class="card details">
                 <div class="card-body">
                     <div class="row">
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-12 text-center">
                                 <img 
                                     src="/images/@(Model.Id).svg" 
                                     class="img-fluid"
                                     alt="image de l'IDE"/>
                             </div>
 
-                            <div class="col-10">
+                            <div class="col-12 text-center detail-titre">
                                 <h2>@Model.Name</h2>
                                 <h4>Category: @Model.EditorCategory</h4>
+                            </div>
+                            <div class="col-12 text-center detail-description">
                                 <p>@Model.Description</p>
                             </div>
                         </div>

@@ -76,7 +76,7 @@ public class BaseDeDonnees
                 Name = "Nano",
                 EditorCategory = EditorCategory.Terminal,
                 Description =
-                    "Nano is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Nano is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Nano is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Nano is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client.",
+                    "GNU nano is a text editor for Unix-like computing systems or operating environments using a command line interface. It emulates the Pico text editor, part of the Pine email client, and also provides additional functionality. Unlike Pico, nano is licensed under the GNU General Public License (GPL). Released as free software by Chris Allegretta in 1999, nano became part of the GNU Project in 2001. The logo resembles the lowercase form of the Greek letter Eta (η).",
                 Id = 8,
                 Favorite = false
             },
@@ -84,8 +84,7 @@ public class BaseDeDonnees
             {
                 Name = "Emacs",
                 EditorCategory = EditorCategory.Terminal,
-                Description =
-                    "GNU Emacs is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. GNU Emacs is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. GNU Emacs is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. GNU Emacs is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client.",
+                Description = "Emacs, originally named EMACS (an acronym for \"Editor MACroS\"), is a family of text editors that are characterized by their extensibility. The manual for the most widely used variant, GNU Emacs, describes it as \"the extensible, customizable, self-documenting, real-time display editor\". Development of the first Emacs began in the mid-1970s, and work on its direct descendant, GNU Emacs, continues actively; the latest version is 28.2, released in September 2022. Emacs has over 10,000 built-in commands and its user interface allows the user to combine these commands into macros to automate work. Implementations of Emacs typically feature a dialect of the Lisp programming language, allowing users and developers to write new commands and applications for the editor. Extensions have been written to, among other things, manage files, remote access, e-mail, outlines, multimedia, git integration, and RSS feeds, as well as implementations of ELIZA, Pong, Conway's Life, Snake, Dunnet, and Tetris. The original EMACS was written in 1976 by David A. Moon and Guy L. Steele Jr. as a set of Editor MACroS for the TECO editor. It was inspired by the ideas of the TECO-macro editors TECMAC and TMACS. The most popular, and most ported, version of Emacs is GNU Emacs, which was created by Richard Stallman for the GNU Project. XEmacs is a variant that branched from GNU Emacs in 1991. GNU Emacs and XEmacs use similar Lisp dialects and are, for the most part, compatible with each other. XEmacs development is inactive. Emacs is, along with vi, one of the two main contenders in the traditional editor wars of Unix culture. Emacs is among the oldest free and open source projects still under development.",
                 Id = 9,
                 Favorite = false
             },
@@ -93,8 +92,7 @@ public class BaseDeDonnees
             {
                 Name = "Vim",
                 EditorCategory = EditorCategory.Terminal,
-                Description =
-                    "Vim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Vim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Vim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. Vim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client.",
+                Description = "Vim (a contraction of Vi IMproved) is a free and open-source, screen-based text editor program. It is an improved clone of Bill Joy's vi. Vim's author, Bram Moolenaar, derived Vim from a port of the Stevie editor for Amiga and released a version to the public in 1991. Vim is designed for use both from a command-line interface and as a standalone application in a graphical user interface. Since its release for the Amiga, cross-platform development has made it available on many other systems. In 2006, it was voted the most popular editor amongst Linux Journal readers;[8] in 2015 the Stack Overflow developer survey found it to be the third most popular text editor, and in 2019 the fifth most popular development environment.",
                 Id = 10,
                 Favorite = false
             },
@@ -102,8 +100,7 @@ public class BaseDeDonnees
             {
                 Name = "NeoVim",
                 EditorCategory = EditorCategory.Terminal,
-                Description =
-                    "NeoVim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. NeoVim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. NeoVim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client. NeoVim is a free and open-source text editor and a command-line utility for Unix-like operating systems. It was originally designed to be a clone of Pico, the default text editor in the Pine email client.",
+                Description = "Neovim is a project that seeks to aggressively refactor Vim in order to Simplify maintenance and encourage contributions, Split the work between multiple developers, Enable advanced UIs without modifications to the core and to Maximize extensibility.",
                 Id = 11,
                 Favorite = false
             },

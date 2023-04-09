@@ -33,15 +33,10 @@ public class SearchController : Controller
     public IActionResult Query(SearchResults model)
     {
         var editors = bd.CodeEditors.ToList();
-        Console.WriteLine("text editor :" + model.Criteria.IsTextEditor);
-        Console.WriteLine("ide :" + model.Criteria.IsIDE);
-        Console.WriteLine("command line :" + model.Criteria.IsCommandLine);
-        Console.WriteLine("editors: " + editors.Count);
         if (!string.IsNullOrEmpty(model.Criteria.Keywords))
         {
             editors = editors.Where(e => e.Name.ToLower().Contains(model.Criteria.Keywords.ToLower())).ToList();
         }
-        Console.WriteLine("keywords check: " + editors.Count);
         if (model.Criteria.IsTextEditor)
         {
             editors = editors.Where(e => e.EditorCategory == 
@@ -49,7 +44,6 @@ public class SearchController : Controller
                                              ? EditorCategory.TextEditor 
                                              : null)).ToList();
         }
-        Console.WriteLine("text editor check: " + editors.Count);
         if (model.Criteria.IsIDE)
         {
             editors = editors.Where(e => e.EditorCategory == 
@@ -57,7 +51,6 @@ public class SearchController : Controller
                                              ? EditorCategory.IDE 
                                              : null)).ToList();
         }
-        Console.WriteLine("ide check: " + editors.Count);
         if (model.Criteria.IsCommandLine)
         {
             editors = editors.Where(e => e.EditorCategory ==
@@ -65,7 +58,6 @@ public class SearchController : Controller
                                              ? EditorCategory.Terminal 
                                              : null)).ToList();
         }
-        Console.WriteLine("command line check: " + editors.Count);
         model.Editors = editors;
         return View("Query", model);
     }

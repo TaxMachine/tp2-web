@@ -22,9 +22,19 @@ else
 app.UseRouting();
 app.MapRazorPages();
 
+app.UseStatusCodePages(context =>
+    {
+        if (context.HttpContext.Response.StatusCode != 404) return Task.CompletedTask;
+        context.HttpContext.Response.Redirect("/NotFound");
+
+        return Task.CompletedTask;
+    }
+);
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action}/{id?}",
-    defaults: new { controller = "Editors", action = "Index" }
+    defaults: new { controller = "Editors", action = "Index" },
+    constraints: new { id = "[0-9]+" }
 );
 app.Run();

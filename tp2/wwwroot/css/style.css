@@ -1,4 +1,19 @@
-﻿.🤓 {
+﻿@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter-Light.ttf");
+}
+
+@font-face {
+    font-family: "Blood";
+    src: url("../fonts/BLOODY.ttf");
+}
+
+@font-face {
+    font-family: "Righteous";
+    src: url("../fonts/Righteous-Regular.ttf");
+}
+
+.🤓 {
     border: 1px solid #000;
     margin: 10px;
     border-radius: 15px;
@@ -19,8 +34,14 @@
     transition: text-decoration 1s ease-in-out;
 }
 
+.🤓 img {
+    display: inline-flex;
+    margin: 10px;
+}
+
 .🤓 p {
     margin: 10px;
+    font-family: "Inter", sans-serif;
 }
 
 .🤓:hover {
@@ -35,6 +56,7 @@
     font-weight: bold;
     text-align: center;
     margin: 10px;
+    font-family: "Righteous", sans-serif;
 }
 footer {
     margin-top: 20px;
@@ -77,11 +99,6 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-@font-face {
-    font-family: "Blood";
-    src: url("../fonts/BLOODY.ttf");
-}
-
 .ip {
     transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, border 0.5s ease-in-out;
     font-size: 1.5em;
@@ -117,4 +134,37 @@ body {
 #navbarNav ul li:hover {
     transition: text-shadow 0.5s ease-in-out;
     text-shadow: 0 0 10px #ab61de;
+}
+
+.details {
+    border: 1px solid #000;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #B1BDC5;
+    box-shadow: 0 0 1px rgb(125, 77, 199);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.details img {
+    display: inline-flex;
+    margin: 10px;
+}
+
+.details:hover {
+    z-index: 1;
+    box-shadow: 0 0 20px rgb(125, 77, 199);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.detail-titre h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px;
+}
+
+.detail-description {
+    margin: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 1.5em;
 }
