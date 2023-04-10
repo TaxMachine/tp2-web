@@ -34,7 +34,7 @@ app.UseStatusCodePages(context =>
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action}/{id?}",
-    defaults: new { controller = "Editors", action = "Index" },
+    defaults: new { controller = "Home", action = "Index" },
     constraints: new { id = "[0-9]+" }
 );
 app.Run();

@@ -7,6 +7,9 @@ public class SearchCriteria
     public bool IsIDE { get; init; }
     public bool IsCommandLine { get; init; }
     
+    public int InferiorRating { get; init; }
+    public int SuperiorRating { get; init; }
+    
     public SearchCriteria()
     {
         Keywords = "";

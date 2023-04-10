@@ -91,11 +91,56 @@ body {
     margin-left: 10px;
 }
 
+.form-check-input[type="checkbox"] {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s ease-in-out;
+    scale: 1.4;
+}
+
+.form-check-input[type="checkbox"]:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.form-check-input[type="checkbox"]:checked {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.form-check-input[type="checkbox"]:checked:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.5s ease-in-out;
+}
+
 .custom-form-group {
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 10px;
     border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary[type="submit"] {
+    background-color: #0cbd2f;
+    border-color: #0cbd2f;
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+.btn-primary[type="submit"]:hover {
+    background-color: rgb(83, 86, 86);
+    border-color: rgb(83, 86, 86);
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+.custom-form-control {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.custom-form-control:focus {
+    border: 1px solid #0cbd2f;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 

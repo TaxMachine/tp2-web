@@ -11,12 +11,8 @@ public class EditorsController : Controller
     {
         bd = db;
     }
-    [Route("/")]
-    public IActionResult Index()
-    {
-        return View(bd.CodeEditors.ToList());
-    }
-    
+
+    [HttpGet]
     [Route("/editors/{id:int}")]
     public IActionResult Details(int id)
     {
@@ -24,19 +20,41 @@ public class EditorsController : Controller
         return editor == null ? View("NotFound", "L'éditeur n'a pas été trouvé!") : View(editor);
     }
     
-    [Route("/editors/addfavorite/{id:int}")]
-    public IActionResult AddFavorite(int id)
+    [HttpGet]
+    [Route("/search")]
+    public IActionResult Search()
     {
-        var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
-        if (editor == null)
-        {
-            return View("NotFound", "L'éditeur n'a pas été trouvé!");
-        }
-        else
-        {
-            editor.Favorite = !editor.Favorite;
-            return RedirectToAction("Index");
-        }
+        return View("Search");
     }
     
+    [HttpPost]
+    [Route("/search/query")]
+    public IActionResult Query(SearchResults model)
+    {
+        var editors = bd.CodeEditors.ToList();
+
+        var results = !string.IsNullOrEmpty(model.Criteria.Keywords) 
+            ? editors.Where(e => e.Name.ToLower().Contains(model.Criteria.Keywords.ToLower())).ToList() 
+            : editors;
+
+        if (model.Criteria.IsTextEditor)
+        {
+            results = results.Where(e => e.EditorCategory == EditorCategory.TextEditor).ToList();
+        }
+
+        if (model.Criteria.IsIDE)
+        {
+            results = results.Where(e => e.EditorCategory == EditorCategory.IDE).ToList();
+        }
+
+        if (model.Criteria.IsCommandLine)
+        {
+            results = results.Where(e => e.EditorCategory == EditorCategory.Terminal).ToList();
+        }
+
+        model.Editors = results.Distinct().ToList();
+    
+        return View("Query", model);
+    }
+
 }

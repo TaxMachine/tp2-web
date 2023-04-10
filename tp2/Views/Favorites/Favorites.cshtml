@@ -11,35 +11,48 @@
             @{
                 foreach (var editor in Model)
                 {
-                    <div class="card 🤓">
-                        <div class="card-body">
-                            <div class="row">
+                    {
+                        var color = editor.PersonalRating switch
+                        {
+                            3 or 2 or 1 or 0 => "red",
+                            7 or 6 or 5 or 4 => "orange",
+                            10 or 9 or 8 => "green",
+                            _ => ""
+                            };
+                        <div class="card 🤓">
+                            <div class="card-body">
                                 <div class="row">
-                                    <div class="col-2">
-                                        <img 
-                                            src="/images/@(editor.Id).svg" 
-                                            class="img-fluid" 
-                                            alt="image de l'éditeur"/>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img
+                                                src="/images/@(editor.Id).svg"
+                                                class="img-fluid"
+                                                alt="image de l'éditeur"/>
+                                        </div>
+                                        <div class="col-10">
+                                            <a href="/editors/@editor.Id">
+                                                <h2>@(editor.Name)</h2></a>
+                                            <h4>Category: @editor.EditorCategory.ToString()</h4>
+                                            <h4>Personal Rating:
+                                                <strong style="color: @color">@(editor.PersonalRating) / 10</strong>
+                                            </h4>
+                                            <p>@(editor.Description)</p>
+                                        </div>
                                     </div>
-                                    <div class="col-10">
-                                        <a href="/editors/@editor.Id"><h2>@(editor.Name)</h2></a>
-                                        <h4>Category: @(editor.EditorCategory)</h4>
-                                        <p>@(editor.Description)</p>
+                                    <div class="col-12">
+                                        <a href="/favorites/remove/@editor.Id">
+                                            <img
+                                                src="/images/trashcan.png"
+                                                class="img-fluid fav"
+                                                alt="pic id code"
+                                                role="button"
+                                                tabIndex="0"/>
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <a href="/favorites/remove/@editor.Id">
-                                        <img
-                                            src="/images/trashcan.png"
-                                            class="img-fluid fav"
-                                            alt="pic id code"
-                                            role="button"
-                                            tabIndex="0"/>
-                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
             }
         </div>

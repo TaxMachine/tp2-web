@@ -7,6 +7,8 @@ public class CodeEditor
     public EditorCategory EditorCategory { get; set; }
     
     public string Description { get; set; }
+    
+    public int PersonalRating { get; set; }
 
     public bool Favorite { get; set; }
     
@@ -15,15 +17,5 @@ public class CodeEditor
     public void RetirerFavorie()
     {
         Favorite = false;
-    }
-
-    public EditorCategory ConvertCategory(string category)
-    {
-        return category switch {
-            "IDE" => EditorCategory.IDE,
-            "TextEditor" => EditorCategory.TextEditor,
-            "Terminal" => EditorCategory.Terminal,
-            _ => EditorCategory.All
-        };
     }
 }

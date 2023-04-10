@@ -13,17 +13,19 @@
                 <div class="col-6">
                     <div class="d-flex">
                         <div class="custom-form-group">
-                            @using (Html.BeginForm("Query", "Search", FormMethod.Post)) {
+                            @using (Html.BeginForm("Query", "Editors", FormMethod.Post)) {
                                 <div class="row">
                                     <div class="col">
+                                        <label for="Keywords">Search</label>
                                         @Html.TextBoxFor(
                                             s => s.Criteria.Keywords, new
                                             {
-                                                @class = "form-control me-2", 
-                                                placeholder = !string.IsNullOrEmpty(Model.Criteria.Keywords) ? Model.Criteria.Keywords : "Search..."
+                                                @class = "form-control me-2 custom-form-control",
+                                                placeholder = !string.IsNullOrEmpty(Model.Criteria.Keywords) ? Model.Criteria.Keywords : "keywords",
+                                                id = "Keywords"
                                             })
                                         <!--<input class="form-control me-2" name="Keywords" type="text" placeholder="Search..." aria-label="Search">-->
-                                        </div>
+                                    </div>
                                     </div>
                                 <div class="row">
                                     <div class="col">
@@ -78,32 +80,43 @@
                     @{
                         foreach (var editor in Model.Editors)
                         {
-                            <div class="card 🤓">
-                                <div class="card-body">
-                                    <div class="row">
+                            {
+                                var color = editor.PersonalRating switch
+                                {
+                                    3 or 2 or 1 or 0 => "red",
+                                    7 or 6 or 5 or 4 => "orange",
+                                    10 or 9 or 8 => "green",
+                                    _ => ""
+                                    };
+                                <div class="card 🤓">
+                                    <div class="card-body">
                                         <div class="row">
-                                            <div class="col-2">
-                                                <img
-                                                    src="/images/@(editor.Id).svg"
-                                                    class="img-fluid"
-                                                    alt="image de l'éditeur"/>
-                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <img
+                                                        src="/images/@(editor.Id).svg"
+                                                        class="img-fluid"
+                                                        alt="image de l'éditeur"/>
+                                                </div>
 
-                                            <div class="col-10">
-                                                <a href="/editors/@editor.Id"><h2>@editor.Name</h2></a>
-                                                <h4>Category: @editor.EditorCategory</h4>
-                                                <p>@editor.Description</p>
+                                                <div class="col-10">
+                                                    <a href="/editors/@editor.Id">
+                                                        <h2>@editor.Name</h2></a>
+                                                    <h4>Category: @editor.EditorCategory.ToString()</h4>
+                                                    <h4>Personal Rating: <strong style="color: @color;">@(editor.PersonalRating) /10</strong></h4>
+                                                    <p>@editor.Description</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <img
-                                                src="/images/@(editor.Favorite ? "star-filled.png" : "star-clear.png")"
-                                                class="img-fluid fav"
-                                                alt="étoile favorie"/>
+                                            <div class="col-12">
+                                                <img
+                                                    src="/images/@(editor.Favorite ? "star-filled.png" : "star-clear.png")"
+                                                    class="img-fluid fav"
+                                                    alt="étoile favorie"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         }
                     }
                 </div>

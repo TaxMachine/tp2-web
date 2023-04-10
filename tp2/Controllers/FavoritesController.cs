@@ -19,18 +19,29 @@ public class FavoritesController : Controller
         return View(editor);
     }
     
+    [HttpGet]
     [Route("/favorites/remove/{id:int}")]
-    public IActionResult Remove(int id)
+    public virtual IActionResult Remove(int id)
     {
         var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
         if (editor == null)
         {
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
-        else
+        editor.Favorite = false;
+        return RedirectToAction("Favorites");
+    }
+    
+    [HttpGet]
+    [Route("/editors/addfavorite/{id:int}")]
+    public IActionResult AddFavorite(int id)
+    {
+        var editor = bd.CodeEditors.SingleOrDefault(e => e.Id == id);
+        if (editor == null)
         {
-            editor.Favorite = false;
-            return RedirectToAction("Favorites");
+            return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
+        editor.Favorite = !editor.Favorite;
+        return Redirect("/editors/" + id);
     }
 }

@@ -4,6 +4,5 @@ public enum EditorCategory
 {
     IDE,
     TextEditor,
-    Terminal,
-    All
+    Terminal
 }

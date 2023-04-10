@@ -4,14 +4,16 @@
             <div class="col-6">
                 <div class="d-flex">
                     <div class="custom-form-group">
-                        @using (Html.BeginForm("Query", "Search", FormMethod.Post)) {
+                        @using (Html.BeginForm("Query", "Editors", FormMethod.Post)) {
                             <div class="row">
                                 <div class="col">
+                                    <label for="Keywords">Search</label>
                                     @Html.TextBoxFor(
                                         s => s.Criteria.Keywords, new
                                         {
-                                            @class = "form-control me-2", 
-                                            placeholder = "Search...",
+                                            @class = "form-control me-2 custom-form-control",
+                                            placeholder = "keywords",
+                                            id = "Keywords"
                                         })
                                 </div>
                             </div>
@@ -51,6 +53,11 @@
                                             Command Line
                                         </label>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    
                                 </div>
                             </div>
                             <div class="row">

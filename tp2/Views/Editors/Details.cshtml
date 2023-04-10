@@ -13,28 +13,38 @@
             <div class="card details">
                 <div class="card-body">
                     <div class="row">
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <img 
-                                    src="/images/@(Model.Id).svg" 
-                                    class="img-fluid"
-                                    alt="image de l'IDE"/>
-                            </div>
+                        @{
+                            var color = Model.PersonalRating switch
+                            {
+                                3 or 2 or 1 or 0 => "red",
+                                7 or 6 or 5 or 4 => "orange",
+                                10 or 9 or 8 => "green",
+                                _ => ""
+                            };
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <img
+                                        src="/images/@(Model.Id).svg"
+                                        class="img-fluid"
+                                        alt="image de l'IDE"/>
+                                </div>
 
-                            <div class="col-12 text-center detail-titre">
-                                <h2>@Model.Name</h2>
-                                <h4>Category: @Model.EditorCategory</h4>
+                                <div class="col-12 text-center detail-titre">
+                                    <h2>@Model.Name</h2>
+                                    <h4>Category: @Model.EditorCategory.ToString()</h4>
+                                    <h4>Personal Rating: <strong style="color: @color">@Model.PersonalRating / 10</strong></h4>
                             </div>
                             <div class="col-12 text-center detail-description">
-                                <p>@Model.Description</p>
+                                    <p>@Model.Description</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12">
-                            <img
-                                src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
-                                class="img-fluid fav"
-                                alt="étoile favorie"/>
-                        </div>
+                            <div class="col-12">
+                                <img
+                                    src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
+                                    class="img-fluid fav"
+                                    alt="étoile favorie"/>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
