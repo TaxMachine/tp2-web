@@ -1,5 +1,8 @@
 ﻿namespace tp2.Models;
 
+/// <summary>
+/// Représente un éditeur de code.
+/// </summary>
 public class CodeEditor
 {
     public string Name { get; set; }
@@ -14,6 +17,9 @@ public class CodeEditor
     
     public int Id { get; set; }
 
+    /// <summary>
+    /// Constructeur par défaut.
+    /// </summary>
     public void RetirerFavorie()
     {
         Favorite = false;

@@ -1,5 +1,8 @@
 ﻿namespace tp2.Models;
 
+/// <summary>
+/// Représente les critères de recherche.
+/// </summary>
 public class SearchCriteria
 {
     public string Keywords { get; init; }
@@ -7,9 +10,12 @@ public class SearchCriteria
     public bool IsIDE { get; init; }
     public bool IsCommandLine { get; init; }
     
-    public int InferiorRating { get; init; }
-    public int SuperiorRating { get; init; }
+    public int MinimumRating { get; init; }
+    public int MaximumRating { get; init; }
     
+    /// <summary>
+    /// Constructeur des critères de recherche.
+    /// </summary>
     public SearchCriteria()
     {
         Keywords = "";

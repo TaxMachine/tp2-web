@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace tp2.Controllers;
 
+/// <summary>
+/// Cette classe permet de gérer les éditeurs de code
+/// </summary>
 public class EditorsController : Controller
 {
     private BaseDeDonnees bd { get; }
@@ -12,6 +15,11 @@ public class EditorsController : Controller
         bd = db;
     }
 
+    /// <summary>
+    /// Cette méthode permet d'afficher la page d'accueil
+    /// </summary>
+    /// <param name="id"> L'id de l'éditeur de code </param>
+    /// <returns> La page d'accueil </returns>
     [HttpGet]
     [Route("/editors/{id:int}")]
     public IActionResult Details(int id)
@@ -20,15 +28,30 @@ public class EditorsController : Controller
         return editor == null ? View("NotFound", "L'éditeur n'a pas été trouvé!") : View(editor);
     }
     
+    /// <summary>
+    /// Cette méthode permet d'afficher la page de recherche
+    /// </summary>
+    /// <returns> La page de recherche </returns>
     [HttpGet]
     [Route("/search")]
     public IActionResult Search()
     {
-        return View("Search");
+        var editors = bd.CodeEditors.ToList();
+        var model = new SearchResults
+        {
+            Editors = editors,
+            Criteria = new SearchCriteria()
+        };
+        return View("Search", model);
     }
     
+    /// <summary>
+    /// Cette méthode permet de faire une recherche parmi les éditeurs de code
+    /// </summary>
+    /// <param name="model"></param>
+    /// <returns> La page de recherche avec les résultats </returns>
     [HttpPost]
-    [Route("/search/query")]
+    [Route("/search")]
     public IActionResult Query(SearchResults model)
     {
         var editors = bd.CodeEditors.ToList();
@@ -37,24 +60,58 @@ public class EditorsController : Controller
             ? editors.Where(e => e.Name.ToLower().Contains(model.Criteria.Keywords.ToLower())).ToList() 
             : editors;
 
-        if (model.Criteria.IsTextEditor)
+        /*
+         * J'avais essayé de faire un if/else if/else mais c'était trop long et trop répétitif
+         * J'ai donc décidé d'utiliser un switch expression qui est plus court et plus lisible
+         */
+        results = (model.Criteria.IsTextEditor, model.Criteria.IsIDE, model.Criteria.IsCommandLine) switch
         {
-            results = results.Where(e => e.EditorCategory == EditorCategory.TextEditor).ToList();
-        }
+            (true, true, true) => results.Where(e =>
+                    e.EditorCategory is EditorCategory.TextEditor or EditorCategory.IDE or EditorCategory.Terminal)
+                .ToList(),
+            
+            (true, true, false) => results
+                .Where(e => e.EditorCategory is EditorCategory.TextEditor or EditorCategory.IDE)
+                .ToList(),
+            
+            (true, false, true) => results
+                .Where(e => e.EditorCategory is EditorCategory.TextEditor or EditorCategory.Terminal)
+                .ToList(),
+            
+            (true, false, false) => results
+                .Where(e => e.EditorCategory is EditorCategory.TextEditor)
+                .ToList(),
+            
+            (false, true, true) => results
+                .Where(e => e.EditorCategory is EditorCategory.IDE or EditorCategory.Terminal)
+                .ToList(),
+            
+            (false, true, false) => results
+                .Where(e => e.EditorCategory is EditorCategory.IDE)
+                .ToList(),
+            
+            (false, false, true) => results
+                .Where(e => e.EditorCategory is EditorCategory.Terminal)
+                .ToList(),
+            
+            (false, false, false) => results
+                .Where(e => e.EditorCategory is EditorCategory.TextEditor or EditorCategory.IDE or EditorCategory.Terminal)
+                .ToList()
+        };
 
-        if (model.Criteria.IsIDE)
+        if (model.Criteria.MinimumRating > 0)
         {
-            results = results.Where(e => e.EditorCategory == EditorCategory.IDE).ToList();
+            results = results.Where(e => e.PersonalRating >= model.Criteria.MinimumRating).ToList();
         }
-
-        if (model.Criteria.IsCommandLine)
+        
+        if (model.Criteria.MaximumRating > 0)
         {
-            results = results.Where(e => e.EditorCategory == EditorCategory.Terminal).ToList();
+            results = results.Where(e => e.PersonalRating <= model.Criteria.MaximumRating).ToList();
         }
 
         model.Editors = results.Distinct().ToList();
     
-        return View("Query", model);
+        return View("Search", model);
     }
 
 }

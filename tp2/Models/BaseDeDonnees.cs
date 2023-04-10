@@ -1,9 +1,19 @@
 ﻿namespace tp2.Models;
 
+/// <summary>
+/// Fausse base de données d'éditeurs de code
+/// </summary>
 public class BaseDeDonnees
 {
+    
+    /// <summary>
+    /// Liste des éditeurs de code
+    /// </summary>
     public List<CodeEditor> CodeEditors { get; }
 
+    /// <summary>
+    /// Constructeur de la base de données
+    /// </summary>
     public BaseDeDonnees()
     {
         CodeEditors = new List<CodeEditor>
