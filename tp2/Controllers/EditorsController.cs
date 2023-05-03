@@ -110,7 +110,7 @@ public class EditorsController : Controller
         }
 
         model.Editors = results.Distinct().ToList();
-    
+        
         return View("Search", model);
     }
 

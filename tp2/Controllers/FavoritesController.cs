@@ -18,6 +18,7 @@ public class FavoritesController : Controller
     /// Cette méthode permet d'afficher la page des favoris
     /// </summary>
     /// <returns> La page des favoris </returns>
+    [HttpGet]
     [Route("/favorites")]
     public IActionResult Favorites()
     {
@@ -58,6 +59,6 @@ public class FavoritesController : Controller
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
         editor.Favorite = !editor.Favorite;
-        return Redirect("/editors/" + id);
+        return Redirect("/");
     }
 }

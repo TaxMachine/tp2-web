@@ -18,6 +18,7 @@ public class HomeController : Controller
     /// Cette méthode permet d'afficher la page d'accueil
     /// </summary>
     /// <returns> La page d'accueil </returns>
+    [HttpGet]
     [Route("/")]
     public IActionResult Index()
     {
