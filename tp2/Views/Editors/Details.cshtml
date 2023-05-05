@@ -33,16 +33,27 @@
                                     <h2>@Model.Name</h2>
                                     <h4>Category: @Model.EditorCategory.ToString()</h4>
                                     <h4>Personal Rating: <strong style="color: @color">@Model.PersonalRating / 10</strong></h4>
-                            </div>
-                            <div class="col-12 text-center detail-description">
+                                </div>
+                                <div class="col-12 text-center detail-description">
                                     <p>@Model.Description</p>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            
+                            <div class="col-6 order-first">
                                 <img
                                     src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
                                     class="img-fluid fav"
                                     alt="étoile favorie"/>
+                            </div>
+                            <div class="col-6 order-last">
+                                <a href="/gestioneditors/delete/@Model.Id">
+                                    <img
+                                        src="/images/trashcan.png"
+                                        class="img-fluid fav"
+                                        alt="pic id code"
+                                        role="button"
+                                        tabIndex="0"/>
+                                </a>
                             </div>
                         }
                     </div>
