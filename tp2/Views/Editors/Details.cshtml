@@ -41,7 +41,7 @@
                             
                             <div class="col-6 order-first">
                                 <form method="post" action="/editors/addfavorite/@(Model.Id)">
-                                    <button type="submit">
+                                    <button type="submit" class="form-inline btn-pas-bootstrap">
                                         <img
                                             src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
                                             class="img-fluid fav"

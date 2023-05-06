@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tp2.Models;
 using System.Collections.Generic;
+using tp3.Models;
 
-namespace tp2.Controllers;
+namespace tp3.Controllers;
 
 /// <summary>
 /// Cette classe permet de gérer les éditeurs de code
@@ -64,7 +64,7 @@ public class EditorsController : Controller
          * J'avais essayé de faire un if/else if/else mais c'était trop long et trop répétitif
          * J'ai donc décidé d'utiliser un switch expression qui est plus court et plus lisible
          */
-        results = (model.Criteria.IsTextEditor, model.Criteria.IsIDE, model.Criteria.IsCommandLine) switch
+        results = (model.Criteria.IsTextEditor, IsIDE: model.Criteria.IsIde, model.Criteria.IsCommandLine) switch
         {
             (true, true, true) => results.Where(e =>
                     e.EditorCategory is EditorCategory.TextEditor or EditorCategory.IDE or EditorCategory.Terminal)
@@ -114,6 +114,10 @@ public class EditorsController : Controller
         return View("Search", model);
     }
     
+    /// <summary>
+    /// Cette méthode permet d'afficher la page des catégories
+    /// </summary>
+    /// <returns></returns>
     [HttpGet]
     [Route("/editors/categories")]
     public IActionResult Categories()
@@ -127,6 +131,11 @@ public class EditorsController : Controller
         return View("Categories", categories);
     }
     
+    /// <summary>
+    /// Cette méthode permet d'afficher la page des éditeurs de code selon la catégorie
+    /// </summary>
+    /// <param name="category"></param>
+    /// <returns></returns>
     [HttpGet]
     [Route("/editors/categories/{category}")]
     public IActionResult Category(EditorCategory category)

@@ -40,14 +40,20 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <a href="/favorites/remove/@editor.Id">
-                                            <img
-                                                src="/images/trashcan.png"
-                                                class="img-fluid fav"
-                                                alt="pic id code"
-                                                role="button"
-                                                tabIndex="0"/>
-                                        </a>
+                                        <form method="post" class="border-0" action="/favorites/remove/@editor.Id">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <button class="form-inline btn-pas-bootstrap" type="submit">
+                                                        <img
+                                                            src="/images/trashcan.png"
+                                                            class="img-fluid fav"
+                                                            alt="pic id code"
+                                                            role="button"
+                                                            tabIndex="0"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

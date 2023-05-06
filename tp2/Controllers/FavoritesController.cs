@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tp2.Models;
+using tp3.Models;
 
-namespace tp2.Controllers;
+namespace tp3.Controllers;
 
 /// <summary>
 /// Cette classe permet de gérer la page des favoris
@@ -13,7 +13,7 @@ public class FavoritesController : Controller
     {
         bd = db;
     }
-    
+
     /// <summary>
     /// Cette méthode permet d'afficher la page des favoris
     /// </summary>
@@ -41,7 +41,7 @@ public class FavoritesController : Controller
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
         editor.Favorite = false;
-        return Redirect("/editors/" + id);
+        return Redirect("/favorites");
     }
     
     /// <summary>

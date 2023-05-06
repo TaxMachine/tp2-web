@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tp2.Models;
+using tp3.Models;
 
-namespace tp2.Controllers;
+namespace tp3.Controllers;
 
+/// <summary>
+/// Cette classe permet de gérer la suppression d'un éditeur de code
+/// </summary>
 public class GestionEditorsController : Controller
 {
     private BaseDeDonnees bd { get; }
@@ -11,6 +14,12 @@ public class GestionEditorsController : Controller
         bd = db;
     }
     
+    
+    /// <summary>
+    /// Cette méthode permet d'afficher la page de suppression d'un éditeur de code
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpGet]
     [Route("/gestioneditors/delete/{id:int}")]
     public IActionResult Get(int id)
@@ -19,6 +28,11 @@ public class GestionEditorsController : Controller
         return editor == null ? View("NotFound", "L'éditeur n'a pas été trouvé!") : View("Delete", editor);
     }
     
+    /// <summary>
+    /// Cette méthode permet de supprimer un éditeur de code
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     [HttpPost]
     [Route("/gestioneditors/delete/{id:int}")]
     public IActionResult Delete(int id)

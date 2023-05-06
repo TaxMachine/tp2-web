@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using tp2.Models;
+using tp3.Models;
 
-namespace tp2.Controllers;
+namespace tp3.Controllers;
 
 /// <summary>
 /// Cette classe permet de gérer la page d'accueil

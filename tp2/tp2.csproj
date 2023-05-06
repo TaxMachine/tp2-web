@@ -4,6 +4,8 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <AssemblyName>tp3</AssemblyName>
+        <RootNamespace>tp3</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

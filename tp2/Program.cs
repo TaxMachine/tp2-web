@@ -1,4 +1,4 @@
-using tp2.Models;
+using tp3.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();

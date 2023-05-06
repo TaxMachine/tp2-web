@@ -229,3 +229,37 @@ body {
     border-color: #030303;
     transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
 }
+
+.btn-pas-bootstrap {
+    border: 0;
+    background: none;
+}
+
+.btn-pas-bootstrap:hover {
+    text-decoration: none;
+}
+
+.btn-pas-bootstrap:focus {
+    text-decoration: none;
+}
+
+code {
+    background-color: #383838;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    border-radius: 10px;
+    
+    transition: 0.5s ease-in-out ;
+}
+
+.dropdown-toggle {
+    border-radius: 5px;
+}
+
+.dropdown-toggle:focus {
+    border: none;
+    box-shadow: none;
+}

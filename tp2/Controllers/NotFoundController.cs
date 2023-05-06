@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace tp2.Controllers;
+namespace tp3.Controllers;
 
 /// <summary>
 /// Cette classe permet de gérer les erreurs 404

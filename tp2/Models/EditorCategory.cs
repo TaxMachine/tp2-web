@@ -1,7 +1,7 @@
-﻿namespace tp2.Models;
+﻿namespace tp3.Models;
 
 /// <summary>
-/// Représente une catégorie d'éditeur de code.
+/// Représente les catégories d'éditeurs de code.
 /// </summary>
 public enum EditorCategory
 {
