@@ -1,12 +1,56 @@
-﻿<!DOCTYPE html>
+﻿@model tp2.Models.CodeEditor
 
+<!DOCTYPE html>
 <html>
 <head>
-    <title>title</title>
+    <title>Delete @Model.Name ?</title>
 </head>
 <body>
-<div>
-      
-</div>
+<main class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card details">
+                <div class="card-body">
+                    <div class="row">
+                        @{
+                            var color = Model.PersonalRating switch
+                            {
+                                3 or 2 or 1 or 0 => "red",
+                                7 or 6 or 5 or 4 => "orange",
+                                10 or 9 or 8 => "green",
+                                _ => ""
+                            };
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <img
+                                        src="/images/@(Model.Id).svg"
+                                        class="img-fluid"
+                                        alt="image de l'IDE"/>
+                                </div>
+
+                                <div class="col-12 text-center detail-titre">
+                                    <h2>@Model.Name</h2>
+                                    <h4>Category: @Model.EditorCategory.ToString()</h4>
+                                    <h4>Personal Rating: <strong style="color: @color">@Model.PersonalRating / 10</strong></h4>
+                                </div>
+                                <div class="col-12 text-center detail-description">
+                                    <p>@Model.Description</p>
+                                </div>
+                            </div>
+                            <div class="row-6">
+                                <div class="col">
+                                    <h4>Êtes vous sûr de vouloir supprimer @Model.Name</h4>
+                                    <form method="post">
+                                        <button type="submit" class="btn-danger">Supprimer</button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

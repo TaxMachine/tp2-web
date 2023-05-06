@@ -1,0 +1,39 @@
+﻿@model List<tp2.Models.EditorCategory>
+
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+    <title>Categories</title>
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                            
+                @foreach(var category in Model)
+                {
+                    <div class="card 🤓">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <img
+                                        src="/images/@(category).png"
+                                        alt="category"
+                                        class="img-fluid card-img"
+                                        width="100px"
+                                        height="100px"
+                                        />
+                                    <h3><a href="/editors/categories/@category">@category</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

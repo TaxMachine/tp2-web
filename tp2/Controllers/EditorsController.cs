@@ -114,5 +114,25 @@ public class EditorsController : Controller
         return View("Search", model);
     }
     
+    [HttpGet]
+    [Route("/editors/categories")]
+    public IActionResult Categories()
+    {
+        var categories = new List<EditorCategory>
+        {
+            EditorCategory.TextEditor,
+            EditorCategory.IDE,
+            EditorCategory.Terminal
+        };
+        return View("Categories", categories);
+    }
     
+    [HttpGet]
+    [Route("/editors/categories/{category}")]
+    public IActionResult Category(EditorCategory category)
+    {
+        var editors = bd.CodeEditors.Where(e => e.EditorCategory == category).ToList();
+        Console.WriteLine(editors);
+        return View("Index", editors);
+    }
 }

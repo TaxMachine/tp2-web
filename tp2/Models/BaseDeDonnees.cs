@@ -63,7 +63,7 @@ public class BaseDeDonnees
                 Name = "Rider",
                 EditorCategory = EditorCategory.IDE,
                 Description =
-                    "Rider is a cross-platform .NET IDE developed by JetBrains. It is a cross-platform .NET IDE based on the IntelliJ Platform. It is available for Windows, macOS and Linux. Rider is a cross-platform .NET IDE based on the IntelliJ Platform. It is available for Windows, macOS and Linux. Rider is a cross-platform .NET IDE based on the IntelliJ Platform. It is available for Windows, macOS and Linux. Rider is a cross-platform .NET IDE based on the IntelliJ Platform. It is available for Windows, macOS and Linux.",
+                    "Rider is a cross-platform .NET IDE developed by JetBrains. It is a cross-platform .NET IDE based on the IntelliJ Platform. It is available for Windows, macOS and Linux.",
                 Id = 5,
                 Favorite = false,
                 PersonalRating = 10
@@ -73,7 +73,7 @@ public class BaseDeDonnees
                 Name = "CLion",
                 EditorCategory = EditorCategory.IDE,
                 Description =
-                    "CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains. It is available for Windows, macOS and Linux. CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains. It is available for Windows, macOS and Linux. CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains. It is available for Windows, macOS and Linux. CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains. It is available for Windows, macOS and Linux.",
+                    "CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains. It is available for Windows, macOS and Linux. CLion is a cross-platform integrated development environment (IDE) for C and C++ developed by JetBrains.",
                 Id = 6,
                 Favorite = false,
                 PersonalRating = 10
@@ -83,7 +83,7 @@ public class BaseDeDonnees
                 Name = "Powershell ISE",
                 EditorCategory = EditorCategory.IDE,
                 Description =
-                    "The PowerShell Integrated Scripting Environment (ISE) is a graphical scripting environment for Windows PowerShell. It is a Windows application that provides a graphical user interface (GUI) for creating and debugging scripts. The ISE is included with Windows 7 and Windows Server 2008 R2, and is available as a free download for Windows Vista and Windows Server 2008. The ISE is included with Windows 7 and Windows Server 2008 R2, and is available as a free download for Windows Vista and Windows Server 2008. The ISE is included with Windows 7 and Windows Server 2008 R2, and is available as a free download for Windows Vista and Windows Server 2008. The ISE is included with Windows 7 and Windows Server 2008 R2, and is available as a free download for Windows Vista and Windows Server 2008.",
+                    "The PowerShell Integrated Scripting Environment (ISE) is a graphical scripting environment for Windows PowerShell. It is a Windows application that provides a graphical user interface (GUI) for creating and debugging scripts. The ISE is included with Windows 7 and Windows Server 2008 R2, and is available as a free download for Windows Vista and Windows Server 2008.",
                 Id = 7,
                 Favorite = false,
                 PersonalRating = 4
@@ -128,7 +128,7 @@ public class BaseDeDonnees
             new CodeEditor()
             {
                 Name = "Visual Studio Code",
-                Description = "Visual Studio Code is a source code editor developed by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. It includes support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. It includes support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. It includes support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. It includes support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git.",
+                Description = "Visual Studio Code is a free source-code editor made by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality. The source code is free and open-source, released under the permissive MIT License. The compiled binaries are freeware and free for private or commercial use.",
                 EditorCategory = EditorCategory.TextEditor,
                 Id = 12,
                 Favorite = false,

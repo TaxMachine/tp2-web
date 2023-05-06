@@ -213,3 +213,19 @@ body {
     font-family: "Inter", sans-serif;
     font-size: 1.5em;
 }
+
+.btn-danger {
+    background-color: #ab0000;
+    border-color: #ab0000;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    color: #ffffff;
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}
+
+.btn-danger:hover {
+    background-color: #030303;
+    border-color: #030303;
+    transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+}

@@ -40,20 +40,25 @@
                             </div>
                             
                             <div class="col-6 order-first">
-                                <img
-                                    src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
-                                    class="img-fluid fav"
-                                    alt="étoile favorie"/>
+                                <form method="post" action="/editors/addfavorite/@(Model.Id)">
+                                    <button type="submit">
+                                        <img
+                                            src="/images/@(Model.Favorite ? "star-filled.png" : "star-clear.png")"
+                                            class="img-fluid fav"
+                                            alt="étoile favorie"/>
+                                    </button>
+
+                                </form>
                             </div>
                             <div class="col-6 order-last">
-                                <a href="/gestioneditors/delete/@Model.Id">
-                                    <img
-                                        src="/images/trashcan.png"
-                                        class="img-fluid fav"
-                                        alt="pic id code"
-                                        role="button"
-                                        tabIndex="0"/>
-                                </a>
+                            <a href="/gestioneditors/delete/@Model.Id">
+                                <img
+                                    src="/images/trashcan.png"
+                                    class="img-fluid fav"
+                                    alt="pic id code"
+                                    role="button"
+                                    tabIndex="0"/>
+                            </a>
                             </div>
                         }
                     </div>

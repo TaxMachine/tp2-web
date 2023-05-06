@@ -31,7 +31,7 @@ public class FavoritesController : Controller
     /// </summary>
     /// <param name="id"> L'id de l'éditeur de code </param>
     /// <returns> La page des favoris </returns>
-    [HttpGet]
+    [HttpPost]
     [Route("/favorites/remove/{id:int}")]
     public virtual IActionResult Remove(int id)
     {
@@ -41,7 +41,7 @@ public class FavoritesController : Controller
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
         editor.Favorite = false;
-        return RedirectToAction("Favorites");
+        return Redirect("/editors/" + id);
     }
     
     /// <summary>
@@ -49,7 +49,7 @@ public class FavoritesController : Controller
     /// </summary>
     /// <param name="id"> L'id de l'éditeur de code </param>
     /// <returns> La page de l'éditeur </returns>
-    [HttpGet]
+    [HttpPost]
     [Route("/editors/addfavorite/{id:int}")]
     public IActionResult AddFavorite(int id)
     {
@@ -59,6 +59,6 @@ public class FavoritesController : Controller
             return View("NotFound", "L'éditeur n'a pas été trouvé!");
         }
         editor.Favorite = !editor.Favorite;
-        return Redirect("/");
+        return Redirect("/editors/" + id);
     }
 }
